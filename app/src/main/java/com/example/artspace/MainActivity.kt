@@ -10,6 +10,7 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,6 +28,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -75,7 +77,23 @@ class MainActivity : ComponentActivity() {
                         ArtPiece(R.drawable.pic2, R.string.pic2_string, R.raw.pic2_sound),
                         ArtPiece(R.drawable.pic3, R.string.pic3_string, R.raw.pic3_sound),
                         ArtPiece(R.drawable.pic4, R.string.pic4_string, R.raw.pic4_sound),
-                        ArtPiece(R.drawable.pic5, R.string.pic5_string, R.raw.pic5_sound)
+                        ArtPiece(R.drawable.pic5, R.string.pic5_string, R.raw.pic5_sound),
+                        ArtPiece(R.drawable.pic6, R.string.pic6_string, R.raw.pic6_sound),
+                        ArtPiece(R.drawable.pic7, R.string.pic7_string, R.raw.pic7_sound),
+                        ArtPiece(R.drawable.pic8, R.string.pic8_string, R.raw.pic8_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic9_string, R.raw.pic9_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic10_string, R.raw.pic10_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic11_string, R.raw.pic11_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic12_string, R.raw.pic12_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic13_string, R.raw.pic13_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic14_string, R.raw.pic14_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic15_string, R.raw.pic15_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic16_string, R.raw.pic16_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic17_string, R.raw.pic17_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic18_string, R.raw.pic18_sound),
+                        ArtPiece(R.drawable.pic9, R.string.pic19_string, R.raw.pic19_sound),
+
+
                     )
                     // Remember the current index
                     var currentIndex by remember { mutableStateOf(0) }
@@ -87,7 +105,9 @@ class MainActivity : ComponentActivity() {
                             contentDescriptionResId = artPieces[currentIndex].titleResId
                         )
 
-                        ShowTitle(artPieces[currentIndex].titleResId)
+                        //ShowTitle(artPieces[currentIndex].titleResId)
+                        ShowTitle(imageId = R.drawable.paper , artText = artPieces[currentIndex].titleResId)
+
 
                         ShowButtons(
                             onPrevious = {
@@ -110,24 +130,6 @@ class MainActivity : ComponentActivity() {
             start() // Start playing the background music
        }
 }
-
-//
-//@Composable
-//fun ShowPicture(
-//    @DrawableRes imageResId: Int,
-//    @StringRes contentDescriptionResId: Int,
-//    modifier: Modifier = Modifier
-//) {
-//    val contentDescription = stringResource(id = contentDescriptionResId)
-//    Image(
-//        painter = painterResource(id = imageResId),
-//        contentDescription = contentDescription,
-//        modifier = modifier.
-//        size(400.dp)
-//            .padding(16.dp),
-//        contentScale = ContentScale.Crop
-//    )
-//}
 @Composable
 fun ShowPicture(
     @DrawableRes imageResId: Int,
@@ -151,21 +153,44 @@ fun ShowPicture(
     }
 }
 
-
-
-@Composable
-fun ShowTitle(@StringRes artText: Int,
-    modifier: Modifier = Modifier
-){
-    val artData = stringResource(id = artText)
-    Column(){
-        Text(artData,
-            color = Color.White,
-            textAlign = TextAlign.Center
+    @Composable
+    fun ShowTitle(
+        @DrawableRes imageId: Int,
+        @StringRes artText: Int,
+        modifier: Modifier = Modifier
+    ) {
+        val artData = stringResource(id = artText)
+        Box(modifier = modifier) {
+            Image(
+                painter = painterResource(id = imageId),
+                contentDescription = null, // Provide a proper content description if needed
+                modifier = Modifier.fillMaxSize()
             )
-
+            Text(
+                text = artData,
+                color = Color.Black,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(16.dp) // Adjust padding as needed
+                    .align(Alignment.Center)
+            )
+        }
     }
-}
+
+//
+//@Composable
+//fun ShowTitle(@StringRes artText: Int,
+//    modifier: Modifier = Modifier
+//){
+//    val artData = stringResource(id = artText)
+//    Column(){
+//        Text(artData,
+//            color = Color.White,
+//            textAlign = TextAlign.Center
+//            )
+//
+//    }
+//}
 
 @Composable
 fun ShowButtons(
