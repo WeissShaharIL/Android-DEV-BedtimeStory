@@ -10,13 +10,13 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -36,8 +36,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.artspace.ui.theme.ArtSpaceTheme
 
 data class ArtPiece(@DrawableRes val imageResId: Int, @StringRes val titleResId: Int, @RawRes val soundResId: Int )
@@ -82,16 +84,19 @@ class MainActivity : ComponentActivity() {
                         ArtPiece(R.drawable.pic7, R.string.pic7_string, R.raw.pic7_sound),
                         ArtPiece(R.drawable.pic8, R.string.pic8_string, R.raw.pic8_sound),
                         ArtPiece(R.drawable.pic9, R.string.pic9_string, R.raw.pic9_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic10_string, R.raw.pic10_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic11_string, R.raw.pic11_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic12_string, R.raw.pic12_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic13_string, R.raw.pic13_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic14_string, R.raw.pic14_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic15_string, R.raw.pic15_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic16_string, R.raw.pic16_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic17_string, R.raw.pic17_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic18_string, R.raw.pic18_sound),
-                        ArtPiece(R.drawable.pic9, R.string.pic19_string, R.raw.pic19_sound),
+                        ArtPiece(R.drawable.pic10, R.string.pic10_string, R.raw.pic10_sound),
+                        ArtPiece(R.drawable.pic11, R.string.pic11_string, R.raw.pic11_sound),
+                        ArtPiece(R.drawable.pic12, R.string.pic12_string, R.raw.pic12_sound),
+                        ArtPiece(R.drawable.pic13, R.string.pic13_string, R.raw.pic13_sound),
+                        ArtPiece(R.drawable.pic14, R.string.pic14_string, R.raw.pic14_sound),
+                        ArtPiece(R.drawable.pic15, R.string.pic15_string, R.raw.pic15_sound),
+                        ArtPiece(R.drawable.pic16, R.string.pic16_string, R.raw.pic16_sound),
+                        ArtPiece(R.drawable.pic17, R.string.pic17_string, R.raw.pic17_sound),
+                        ArtPiece(R.drawable.pic18, R.string.pic18_string, R.raw.pic18_sound),
+                        ArtPiece(R.drawable.pic19, R.string.pic19_string, R.raw.pic19_sound),
+                        ArtPiece(R.drawable.pic20, R.string.pic20_string, R.raw.pic20_sound),
+                        ArtPiece(R.drawable.pic21, R.string.pic21_string, R.raw.pic21_sound),
+
 
 
                     )
@@ -159,6 +164,7 @@ fun ShowPicture(
         @StringRes artText: Int,
         modifier: Modifier = Modifier
     ) {
+
         val artData = stringResource(id = artText)
         Box(modifier = modifier) {
             Image(
@@ -166,10 +172,12 @@ fun ShowPicture(
                 contentDescription = null, // Provide a proper content description if needed
                 modifier = Modifier.fillMaxSize()
             )
+
             Text(
                 text = artData,
                 color = Color.Black,
                 textAlign = TextAlign.Center,
+                style = TextStyle(fontSize = 16.sp),
                 modifier = Modifier
                     .padding(16.dp) // Adjust padding as needed
                     .align(Alignment.Center)
